@@ -11,7 +11,7 @@ class signIn {
     get myPreviousOrders() { return $('h1.header')}
     get emptyEmailError() { return $('p[data-testid]')}
     get emptyPasswordError() { return $(`//*[@id="gatsby-focus-wrapper"]/div[2]/form/div/p[2]`)} //to find a better xPath. This is copied from devtool
-    get incorrectPasswordMessage() { return $('div.ui.error.message')}
+    get invalidPasswordAndEmailError() { return $('div.ui.error.message')}
 
 
     /**
