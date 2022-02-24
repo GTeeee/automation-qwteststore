@@ -43,11 +43,11 @@ class signIn {
      */
     clickLoginButton(){
         this.loginButton.waitForDisplayed()
-        this.loginButton.click()
+        return this.loginButton.click()
     }
 
-    getPasswordErrorMessage() {
+/*     getPasswordErrorMessage() {
 
-    }
+    } */
 }
 module.exports = new signIn
