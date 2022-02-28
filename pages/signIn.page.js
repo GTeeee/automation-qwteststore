@@ -1,16 +1,12 @@
-//const { default: $ } = require("webdriverio/build/commands/browser/$")
-
-const { default: $ } = require("webdriverio/build/commands/browser/$")
-
 class signIn {
 
     get emailField() {return $('#email')}
     get passwordField() { return $('#password')}
     get loginHeader() { return $('h1.ui')}
-    get loginButton() {return $('.button')}  
+    get loginButton() {return $('button.ui.orange.button')}  
     get myPreviousOrders() { return $('h1.header')}
     get emptyEmailError() { return $('p[data-testid]')}
-    get emptyPasswordError() { return $(`//*[@id="gatsby-focus-wrapper"]/div[2]/form/div/p[2]`)} //to find a better xPath. This is copied from devtool
+    get emptyPasswordError() { return $(`div.ui.segment > p`)} //to find a better xPath. This is copied from devtool
     get invalidPasswordAndEmailError() { return $('div.ui.error.message')}
 
 
@@ -21,7 +17,7 @@ class signIn {
     addEmailToField(text){
         this.emailField.waitForDisplayed()
         this.emailField.moveTo()
-        this.emailField.click()
+        //this.emailField.click()
         return this.emailField.setValue(text)
     }
 
@@ -33,7 +29,6 @@ class signIn {
     addPasswordToField(password) {
         this.passwordField.waitForDisplayed()
         this.passwordField.moveTo()
-        this.passwordField.click()
         return this.passwordField.setValue(password)
     }
 
@@ -43,11 +38,9 @@ class signIn {
      */
     clickLoginButton(){
         this.loginButton.waitForDisplayed()
+        //this.loginButton.moveTo()
         return this.loginButton.click()
     }
 
-/*     getPasswordErrorMessage() {
-
-    } */
 }
 module.exports = new signIn
