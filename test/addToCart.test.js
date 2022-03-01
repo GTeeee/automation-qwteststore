@@ -31,10 +31,13 @@ describe('shopping cart test as guest and authenicated user', function(){
         expect(productPage.shoppingCartSuccess).to.be.displayed
         //await browser.url(`${browser.options.baseUrl}/cart`)
     })
-    it.skip('should validate that product price is same of details page and cart screen', async () => {
+    it('should validate that product price is same of details page and cart screen', async () => {
         await browser.url(`${browser.options.baseUrl}/login`)
-
-
+        await signInPage.addEmailToField('desk@desk.com')
+        await signInPage.addPasswordToField('desk1')
+        await signInPage.clickLoginButton()
+        await browser.url(`${browser.options.baseUrl}`)
+        
 
     })
     it.skip('should ensure user cart does not change after sign out ', async () => {
