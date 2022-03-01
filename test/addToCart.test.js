@@ -1,5 +1,6 @@
 cart = require('../pages/cart.page.js')
 productPage = require('../pages/product.page.js')
+signInPage = require('../pages/signInPage.js')
 
 describe('shopping cart test as guest and authenicated user', function(){
     it('should add one item to cart - guest', async () => {
@@ -31,7 +32,9 @@ describe('shopping cart test as guest and authenicated user', function(){
         //await browser.url(`${browser.options.baseUrl}/cart`)
     })
     it.skip('should validate that product price is same of details page and cart screen', async () => {
-        
+        await browser.url(`${browser.options.baseUrl}/login`)
+
+
 
     })
     it.skip('should ensure user cart does not change after sign out ', async () => {
