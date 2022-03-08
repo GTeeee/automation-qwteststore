@@ -1,28 +1,45 @@
+const { assert } = require('chai')
+
 cart = require('../pages/cart.page.js')
 signInPage = require('../pages/signIn.page.js')
 productPage = require('../pages/product.page.js')
 
 describe('Checkout items in cart ', function(){
-    it('should checkout selected items as a guest ', async () =>{
+    it('should checkout selected items as a guest ', async () => {
         await browser.url(`${browser.options.baseUrl}`)
-        await productPage.seeSingleItem(4)
+        await productPage.seeSingleItem(1)
         await productPage.addItemToCart()
+        await productPage.shoppingCartSuccess.waitForExist()
+        //browser.pause(50000)
         await browser.url(`${browser.options.baseUrl}/cart`)
-        let subTotal = cart.subTotalInCart.getText()
+        //let totalText = cart.subTotalInCart.getText()
+        //await browser.pause(5000) //pause
         await cart.clickCheckoutButton()
-        //await cart.iframe.waitForExisting()
-        await browser.switchToFrame(cart.iframe)
+        //await browser.pause(5000) //pause
+        await cart.iframe.waitForExist()
+        //assert.equal(true, await cart.iframe.isDisplayed())
+/*         const iframe = await $('stripe_checkout_app')
+        console.log(iframe) */
+        await browser.switchToFrame(0)
+        assert.equal('Gatsby Store', await cart.checkoutHeader.getText())
+        await cart.nameField.waitForExist()
         await cart.sendEmail('test@test.com')
+        //console.log(totalText)
         await cart.sendName('Test')
         await cart.sendStreetAddress('TestStreet')
+        //await cart.countryDropdown.waitForExist()
         await cart.sendCity('TestCity')
+        await cart.getJamaicaDropdown()
+        //await cart.sendZipcodeText('1233')
         await cart.clickPayButton()
-        await cart.sendCardNumber.waitForExisting()
+        await cart.cardNumber.waitForExist()
         await cart.sendCardNumber('4242424242424242')
         await cart.sendCardExpiry('422')
         await cart.sendCardCVC('529')
         await cart.clickPayButton()
-
+        //expect(cart.payIssue).to.contain.text('You did not set a valid publishable key')
+        assert.equal('You did not set a valid publishable key. Call Stripe.setPublishableKey() with your publishable key. For more info, see https://stripe.com/docs/stripe.js', await cart.getPayIssueText())
+        await browser.switchToParentFrame()
     })
     it.skip('should checkout selected items as an authenticated user ', async () =>{
         await browser.url(`${browser.options.baseUrl}/login`)
@@ -34,9 +51,17 @@ describe('Checkout items in cart ', function(){
         await productPage.addItemToCart()
         await browser.url(`${browser.options.baseUrl}/cart`)
         await cart.clickCheckoutButton
-        await browser.switchToFrame(cart.iframe)
-
-        //code for complete checkout
+        await browser.switchToFrame(0)
+        await cart.sendEmail('test@test.com')
+        await cart.sendName('Test')
+        await cart.sendStreetAddress('TestStreet')
+        await cart.sendCity('TestCity')
+        await cart.clickPayButton()
+        await cart.cardNumber.waitForExist()
+        await cart.sendCardNumber(4242424242424242)
+        await cart.sendCardExpiry(422)
+        await cart.sendCardCVC(529)
+        await cart.clickPayButton()
 
     })
 
