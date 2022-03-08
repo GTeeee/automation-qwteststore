@@ -77,17 +77,17 @@ class shoppingCart{
 
     sendCardNumber(text){
         this.cardNumber.waitForDisplayed()
-        return this.cardNumber.sendKeys(text)
+        return this.cardNumber.setValue(text)
     }
 
     sendCardExpiry(text){
         this.cardExpiry.waitForDisplayed()
-        return this.cardExpiry.sendKeys(text)
+        return this.cardExpiry.setValue(text)
     }
 
     sendCardCVC(text){
         this.cardCVC.waitForDisplayed()
-        return this.cardCVC.sendKeys(text)
+        return this.cardCVC.setValue(text)
     }
 
     clickPayButton(){
