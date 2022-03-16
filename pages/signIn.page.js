@@ -14,9 +14,9 @@ class signIn {
      * Inputs the given email address
      * @param {String} text is the email address that will be input in the email field
      */
-    addEmailToField(text){
-        this.emailField.waitForDisplayed()
-        this.emailField.moveTo()
+    async addEmailToField(text){
+        await this.emailField.waitForDisplayed()
+        await this.emailField.moveTo()
         //this.emailField.click()
         return this.emailField.setValue(text)
     }

@@ -20,91 +20,91 @@ class shoppingCart{
     get cardCVC(){ return $('input#cc-csc')}
     get payButton(){ return $('button#submitButton')}
     get payIssue(){ return $('div.buttonsView > div.popoverView:nth-child(5) > div.content')}
+    get paymentMessage(){ return $('div.ui.success.message')}
+    get successButton(){ return $('div.button.submit.success')}
 
-    getTextOfPrice(){
-        this.priceInCart.waitForDisplayed()
+    async getTextOfPrice(){
+        await this.priceInCart.waitForDisplayed()
         return this.priceInCart.getText()
     }
 
-    signOutOfAccount(){
-        this.signOutButton.waitForDisplayed()
-        this.signOutButton.click()
+    async signOutOfAccount(){
+        await this.signOutButton.waitForDisplayed()
+        await this.signOutButton.click()
     }
 
-    getSubtotalText(){
-        this.subTotalInCart.waitForDisplayed()
+    async getSubtotalText(){
+        await this.subTotalInCart.waitForDisplayed()
         return this.subTotal.cart.getText()
     }
 
-    getPayIssueText(){
-        this.payIssue.waitForDisplayed()
+    async getPayIssueText(){
+        await this.payIssue.waitForDisplayed()
         return this.payIssue.getText()
     }
 
-    getJamaicaDropdown(){
-        this.countryDropdown.waitForDisplayed()
-        this.countryDropdown.selectByAttribute('value', 'JM')
+    async getJamaicaDropdown(){
+        await this.countryDropdown.waitForDisplayed()
+        await this.countryDropdown.selectByAttribute('value', 'JM')
     }
 
-    clickCheckoutButton(){
-        this.checkoutButton.isDisplayed()
-        this.checkoutButton.click()
+    async getUsDropdown(){
+        await this.countryDropdown.waitForDisplayed()
+        await this.countryDropdown.selectByAttribute('value', 'US')
+    }
+        
+    async clickCheckoutButton(){
+        await this.checkoutButton.isDisplayed()
+        await this.checkoutButton.click()
     }
 
     /**
      * input an email value in the store form
      */
     
-    sendEmail(text){
-        this.emailField.waitForDisplayed()
+    async sendEmail(text){
+        await this.emailField.waitForDisplayed()
         return this.emailField.setValue(text)
     }
 
-    sendName(text){
-        this.nameField.waitForDisplayed()
+    async sendName(text){
+        await this.nameField.waitForDisplayed()
         return this.nameField.setValue(text)
     }
 
-    sendStreetAddress(text){
-        this.streetAddressField.waitForDisplayed()
+    async sendStreetAddress(text){
+        await this.streetAddressField.waitForDisplayed()
         return this.streetAddressField.setValue(text)
     }
 
-    sendCity(text){
-        this.cityField.waitForDisplayed()
+    async sendCity(text){
+        await this.cityField.waitForDisplayed()
         return this.cityField.setValue(text)
     }
 
-    sendCardNumber(text){
-        this.cardNumber.waitForDisplayed()
+    async sendCardNumber(text){
+        await this.cardNumber.waitForDisplayed()
         return this.cardNumber.setValue(text)
     }
 
-    sendCardExpiry(text){
-        this.cardExpiry.waitForDisplayed()
+    async sendCardExpiry(text){
+        await this.cardExpiry.waitForDisplayed()
         return this.cardExpiry.setValue(text)
     }
 
-    sendCardCVC(text){
-        this.cardCVC.waitForDisplayed()
-        return this.cardCVC.setValue(text)
+    async sendCardCVC(text){
+        await this.cardCVC.waitForDisplayed()
+        return await this.cardCVC.setValue(text)
     }
 
-    clickPayButton(){
-        this.payButton.waitForDisplayed()
-        this.payButton.click()
+    async clickPayButton(){
+        await this.payButton.waitForDisplayed()
+        await this.payButton.click()
     }
 
-    sendZipcodeText(text){
-        this.zipcodeInput.waitForDisplayed()
-        this.zipcodeInput.setValue(text)
+    async sendZipcodeText(text){
+        await this.zipcodeInput.waitForDisplayed()
+        await this.zipcodeInput.setValue(text)
     }
-
-
-
-
-
-
-
 }
 module.exports = new shoppingCart();
