@@ -25,7 +25,6 @@
     "@wdio/mocha-framework": "^7.16.14",
     "@wdio/selenium-standalone-service": "^7.16.14",
     "@wdio/spec-reporter": "^7.16.14",
-<<<<<<< HEAD
     "chai-webdriverio": "^1.0.0",
     "local-runner": "^0.1.1-alpha",
     "wdio-wait-for": "^2.2.1",
@@ -34,12 +33,5 @@
   "dependencies": {
     "@wdio/cli": "^7.16.16",
     "chai": "^4.3.6"
-=======
-    "wdio-wait-for": "^2.2.1",
-    "webdriverio": "^7.16.14"
-  },
-  "dependencies": {
-    "@wdio/cli": "^7.16.14"
->>>>>>> main
   }
 }
