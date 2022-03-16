@@ -6,6 +6,20 @@ class Product{
 
     getSingleProduct(index){return $(`a.ui.card:nth-child(${index})`)}
 
+<<<<<<< HEAD
+    addItemToCart(){
+        this.addToCartButton.waitForDisplayed()
+        this.addToCartButton.click()
+    }
+
+    seeSingleItem(index){
+        this.getSingleProduct(index).waitForDisplayed()
+        this.getSingleProduct(index).click()  
+    }
+
+    getPriceOfProduct(){
+        this.productPrice.waitForDisplayed()
+=======
     async addItemToCart(){
         await this.addToCartButton.waitForDisplayed()
         await this.addToCartButton.click()
@@ -18,6 +32,7 @@ class Product{
 
     async getPriceOfProduct(){
         await this.productPrice.waitForDisplayed()
+>>>>>>> main
         return this.productPrice.getText()
     }
  
