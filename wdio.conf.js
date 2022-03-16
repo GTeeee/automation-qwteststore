@@ -1,3 +1,10 @@
+const url = require('./urls')
+const ENV = process.env.ENV
+
+if(!ENV || !['dev','prd'].includes(ENV)){
+    console.log('Please use the following format to run tests: ENV=dev|prd')
+    process.exit()
+}
 exports.config = {
     //
     // ====================
@@ -94,7 +101,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://qw-test-store-prod.netlify.app',
+    baseUrl: url[process.env.ENV],
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -141,11 +148,7 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-<<<<<<< HEAD
         timeout: 60000
-=======
-        timeout: 60000000,
->>>>>>> main
     },
     //
     // =====

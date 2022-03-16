@@ -3,9 +3,20 @@ signInPage = require('../pages/signIn.page')
 describe('Sign In to the store', () => {
     it('should enter valid email and password', async () => {
         await browser.url(`${browser.options.baseUrl}/login`)
+        await signInPage.emailField.waitForExist()
         await signInPage.addEmailToField('desk@desk.com')
         await signInPage.addPasswordToField('desk1')
         await signInPage.clickLoginButton()
+        //await browser.pause(50000)
+       /*  await browser.waitUntil(
+            async ()=>(
+                await (await (signInPage.loginHeader)).getText() === 'My previous orders',
+                {
+                    timeout: 60000,
+                    timeoutMsg: 'Expected user to be logged in within a minute'
+                }
+            )
+        ) */
         await browser.pause(50000)
         await signInPage.loginHeader.waitForExist()
         assert.equal('My previous orders', await signInPage.loginHeader.getText())
@@ -44,7 +55,7 @@ describe('Sign In to the store', () => {
         await signInPage.addEmailToField('')
         await signInPage.addPasswordToField('')
         await signInPage.clickLoginButton()
-        await browser.pause(50000)
+        //await browser.pause(50000)
         await signInPage.emptyEmailError.waitForExist()
         //await signInPage.emptyPasswordError.waitForExist()
         assert.equal('Email address is required', await signInPage.emptyEmailError.getText())

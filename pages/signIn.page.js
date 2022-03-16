@@ -14,15 +14,9 @@ class signIn {
      * Inputs the given email address
      * @param {String} text is the email address that will be input in the email field
      */
-<<<<<<< HEAD
-    addEmailToField(text){
-        this.emailField.waitForDisplayed()
-        this.emailField.moveTo()
-=======
     async addEmailToField(text){
         await this.emailField.waitForDisplayed()
         await this.emailField.moveTo()
->>>>>>> main
         //this.emailField.click()
         return this.emailField.setValue(text)
     }
@@ -32,9 +26,9 @@ class signIn {
      * @param {String} text Password
      */
 
-    addPasswordToField(password) {
-        this.passwordField.waitForDisplayed()
-        this.passwordField.moveTo()
+    async addPasswordToField(password) {
+        await this.passwordField.waitForDisplayed()
+        await this.passwordField.moveTo()
         return this.passwordField.setValue(password)
     }
 
@@ -42,8 +36,8 @@ class signIn {
     /**
      * Button click action for submitting the form
      */
-    clickLoginButton(){
-        this.loginButton.waitForDisplayed()
+    async clickLoginButton(){
+        await this.loginButton.waitForDisplayed()
         //this.loginButton.moveTo()
         return this.loginButton.click()
     }

@@ -1,26 +1,6 @@
 class shoppingCart{
 
     get priceInCart(){ return $('div.meta')} //this gets back the quantity and price
-<<<<<<< HEAD
-    get subTotalInCart(){ return $(`div.ui.large.clearing.segment > span:nth-child(1)`)}
-    get signOutButton(){ return $(`div.right.menu a:nth-child(2)`)}
-
-    getTextOfPrice(){
-        this.priceInCart.waitForDisplayed()
-        return this.priceInCart.getText()
-    }
-
-    signOutOfAccount(){
-        this.signOutButton.waitForDisplayed()
-        this.signOutButton.click()
-    }
-
-    getSubtotalText(){
-        this.subTotalInCart.waitForDisplayed()
-        return this.subTotal.cart.getText()
-    }
-
-=======
     get checkoutButton(){ return $('button.ui.black.right.floated.button')}
     get subTotalInCart(){ return $(`div.ui.large.clearing.segment > span:nth-child(1)`)}
     get signOutButton(){ return $(`div.right.menu a:nth-child(2)`)}
@@ -126,6 +106,5 @@ class shoppingCart{
         await this.zipcodeInput.waitForDisplayed()
         await this.zipcodeInput.setValue(text)
     }
->>>>>>> main
 }
 module.exports = new shoppingCart();
