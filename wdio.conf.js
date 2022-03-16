@@ -141,7 +141,7 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 60000000,
     },
     //
     // =====
@@ -205,14 +205,17 @@ exports.config = {
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
     beforeTest: function (test, context) {
+        require('expect-webdriverio');
+        global.wdioExpect = global.expect;
+
         const chai = require('chai')
-        const chaiWebdriver = require('chai-webdriver').default
+        const chaiWebdriver = require('chai-webdriverio').default
 
         chai.use(chaiWebdriver(browser))
 
         global.assert = chai.assert
-        global.should = chai.should
         global.expect = chai.expect
+        chai.Should()
     },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
