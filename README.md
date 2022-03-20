@@ -21,4 +21,4 @@ e.g. If I wish to run my login test only: npm run test -- --spec login.test.js
 
 Update: 
 You may now run your test on the dev or production environment using the following command
-ENV=<nameofenv> npm run test. The name of the environments can be found on in the urls.js file.
+ENV=<nameofenv> npm run test ...  The name of the environments can be found on in the urls.js file.
